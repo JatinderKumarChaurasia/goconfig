@@ -1,9 +1,11 @@
 package goconfig
 
-import (
-	_ "github.com/jatinderkumarchaurasia/goconfig/filelooker"
-)
+import "log"
 
 func init() {
 	println("setting go configurations")
+}
+
+func GoConfig() {
+	log.Println("hello world")
 }
