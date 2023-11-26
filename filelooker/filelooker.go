@@ -1,19 +1,23 @@
 package filelooker
 
 import (
+	"context"
 	"log"
 	"os"
 	"strings"
 )
 
 const (
-	DEFAULT_APP_CONFIG_DIR = "config"
+	DefaultAppConfigDir = "config"
 )
 
 func init() {
-	lookFileBasedOnEnvironment()
+	loadEnvironmentValues()
 }
-func lookFileBasedOnEnvironment() {
+
+func FileLooker() {}
+
+func loadEnvironmentValues() {
 	log.Println("getting default configuration directory")
 	var configDir string
 	if val, exist := os.LookupEnv("DEFAULT_APP_CONFIG_DIR"); exist && len(strings.TrimSpace(val)) != 0 {
@@ -24,7 +28,9 @@ func lookFileBasedOnEnvironment() {
 		if err != nil {
 			panic("unable to get working directory,exiting!")
 		}
-		configDir = workingDir + "/" + DEFAULT_APP_CONFIG_DIR
+		configDir = workingDir + "/" + DefaultAppConfigDir
+
 		log.Println("application configuration directory taken from default: ", configDir)
 	}
+	context.WithValue(context.Background(), "CONFIG_WORKING_DIR", configDir)
 }
