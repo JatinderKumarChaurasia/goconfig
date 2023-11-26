@@ -1,9 +1,9 @@
-package main
+package goconfig
 
 import (
 	_ "github.com/jatinderkumarchaurasia/goconfig/filelooker"
 )
 
-func main() {
-	println("hello world")
+func init() {
+	println("setting go configurations")
 }
